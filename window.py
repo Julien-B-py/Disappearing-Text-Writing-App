@@ -41,3 +41,10 @@ class Window(Tk):
 
     def update_words_count(self, count):
         self.count_label.config(text=f'{count} words')
+
+    def ask_try_again(self,words):
+        user_answer = messagebox.askquestion('You failed',
+                                             f'You wrote {words} words before the app deleted everything\nTry again?')
+        if user_answer == 'no':
+            self.destroy()
+        return True

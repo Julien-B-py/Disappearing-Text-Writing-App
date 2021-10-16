@@ -13,8 +13,14 @@ def countdown():
             window.change_text_bg_color(timer.value)
             if timer.value >= 5:
                 window.clear_text()
-                user.reset_words_count()
-                window.update_words_count(user.typed_words)
+
+                if window.ask_try_again(user.typed_words):
+                    user.typed = False
+                    user.reset_words_count()
+                    window.reset_text_bg_color()
+                    window.update_words_count(user.typed_words)
+                    timer.reset()
+
         time.sleep(1)
 
 
