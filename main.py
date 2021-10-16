@@ -28,14 +28,15 @@ def main():
         time.sleep(1)
 
 
-timer = Timer()
-user = User()
-window = Window(timer, user)
+if __name__ == "__main__":
+    timer = Timer()
+    user = User()
+    window = Window(timer, user)
 
-# Using thread to run main loop and be able to display the user interface at the same time
-# daemon = True: kill the thread when main program exits
-t = threading.Thread(target=main, daemon=True)
-# Start the main loop
-t.start()
-# Required to display app window
-window.mainloop()
+    # Using thread to run main loop and be able to display the user interface at the same time
+    # daemon = True: kill the thread when main program exits
+    t = threading.Thread(target=main, daemon=True)
+    # Start the main loop
+    t.start()
+    # Required to display app window
+    window.mainloop()

@@ -4,7 +4,7 @@ from tkinter import Tk, Text, END, messagebox, Label, WORD
 class Window(Tk):
     def __init__(self, timer, user):
         super().__init__()
-        self.title('Disappearing Text Writing App')
+        self.title("Disappearing Text Writing App")
         # Call key_pressed function everytime a key is pressed
         self.bind("<Key>", self.key_pressed)
         # Make the close button call on_closing function to display a messagebox
@@ -26,18 +26,18 @@ class Window(Tk):
 
     def create_widgets(self):
         """Widgets creation and layout setup"""
-        self.top_label = Label(text='Don’t stop writing, or all progress will be lost', font=('Montserrat', 10))
+        self.top_label = Label(text="Don’t stop writing, or all progress will be lost", font=("Montserrat", 10))
         self.top_label.pack(pady=10)
-        self.text_area = Text(self, width=46, height=25, font=('Montserrat', 14), wrap=WORD)
+        self.text_area = Text(self, width=46, height=25, font=("Montserrat", 14), wrap=WORD)
         self.text_area.pack(padx=20)
         self.text_area.focus_set()
         self.count_label = Label()
-        self.count_label.config(text='0 words')
+        self.count_label.config(text="0 words")
         self.count_label.pack(pady=10)
 
     def clear_text(self):
         """Clear the text widget content"""
-        self.text_area.delete('1.0', END)
+        self.text_area.delete("1.0", END)
 
     def change_text_bg_color(self):
         """
@@ -51,7 +51,7 @@ class Window(Tk):
         """
         Change the Text widget background color to default value: white.
         """
-        self.text_area.config(bg='white')
+        self.text_area.config(bg="white")
 
     def on_closing(self):
         """
@@ -64,7 +64,7 @@ class Window(Tk):
         """
         Change the label text to display the current amount of words typed by the user.
         """
-        self.count_label.config(text=f'{self.user.typed_words} words')
+        self.count_label.config(text=f"{self.user.typed_words} words")
 
     def ask_try_again(self):
         """
@@ -73,10 +73,10 @@ class Window(Tk):
             Returns:
                 bool: True if user wants to restart.
         """
-        user_answer = messagebox.askquestion('You failed',
-                                             f'You wrote {self.user.typed_words} words before the app deleted '
-                                             f'everything\nTry again?')
-        if user_answer == 'no':
+        user_answer = messagebox.askquestion("You failed",
+                                             f"You wrote {self.user.typed_words} words before the app deleted "
+                                             f"everything\nTry again?")
+        if user_answer == "no":
             self.destroy()
         return True
 
@@ -91,7 +91,7 @@ class Window(Tk):
         if not self.user.typed:
             self.user.typed = True
 
-        if event.char == ' ':
+        if event.char == " ":
             self.user.increment_words_count()
             self.update_words_count()
 
